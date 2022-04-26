@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, {useState} from 'react';
+import { createRoot } from 'react-dom/client';
+import Perfil from './Perfil';
+import Lista from './Lista';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const lista = false;
+const perfil = true;
+
+function Root(props){
+    
+    const [seeLista, setseeLista] = useState(true);
+    const [perPerfil, setPerfil] = useState();
+    
+    function switchpage(x){
+        setseeLista(!seeLista);
+        setPerfil(x);
+    }
+    
+    return (
+            seeLista ? <Lista switchpage={switchpage} /> : <Perfil person={perPerfil} />
+	   );
+}
+
+const container = document.getElementById('root');
+const root = createRoot(container);
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+		<React.StrictMode>
+			<Root />
+		</React.StrictMode>
+	   );
