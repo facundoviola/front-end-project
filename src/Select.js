@@ -18,7 +18,7 @@ export default function Select(props) {
     },[]);
     
     function changeHandler(e){
-        
+        //onChange={changeHandler}
         let headers = new Headers();
         headers.set("Content-Type", "application/x-www-form-urlencoded");
         
@@ -53,8 +53,13 @@ export default function Select(props) {
     
     Optionlist.unshift(<option key={"in"} value ={"in"}> Choose a Person: < /option>)
     return (
-            <select id="persons" name="persons" onChange={changeHandler}>
-                 {Optionlist}   
-            </select>
+             <>   
+                <select id="persons" name="persons" >
+                     {Optionlist}   
+                </select>
+                <br />
+                <label for="pass">Password</label>
+                <input id="pass" type="password" />
+             </>
     );
 }

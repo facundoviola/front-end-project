@@ -3,3 +3,7 @@ img {
     height: 10%;
     float: left;
 }
+
+input {
+    margin: 3px;
+}
